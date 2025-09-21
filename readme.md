@@ -28,7 +28,7 @@ Relasi:
 - Satu `MeetingRoom` bisa dipakai di banyak `Booking`
 - Satu `Booking` bisa punya banyak `MeetingParticipant`
 
-*(Tambahkan gambar ERD di sini kalau ada, misal pakai draw.io atau dbdiagram.io)*
+*![ERD E-Meeting](ERD_Tugas_E_Meeting.png)*
 
 ---
 
