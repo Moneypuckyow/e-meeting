@@ -40,12 +40,12 @@ CREATE TABLE Department (
     name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE "User" (
+CREATE TABLE "user" (
     user_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     department_id INT,
-    FOREIGN KEY (department_id) REFERENCES Department(department_id)
+    FOREIGN KEY (department_id) REFERENCES Department(department_id) ON DELETE CASCADE
 );
 
 CREATE TABLE MeetingRoom (
@@ -63,17 +63,18 @@ CREATE TABLE Booking (
     start_time TIMESTAMP NOT NULL,
     end_time TIMESTAMP NOT NULL,
     status VARCHAR(20) DEFAULT 'pending',
-    FOREIGN KEY (user_id) REFERENCES "User"(user_id),
-    FOREIGN KEY (room_id) REFERENCES MeetingRoom(room_id)
+    FOREIGN KEY (user_id) REFERENCES "User"(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (room_id) REFERENCES MeetingRoom(room_id) ON DELETE CASCADE
 );
 
 CREATE TABLE MeetingParticipant (
     booking_id INT NOT NULL,
     user_id INT NOT NULL,
     PRIMARY KEY (booking_id, user_id),
-    FOREIGN KEY (booking_id) REFERENCES Booking(booking_id),
-    FOREIGN KEY (user_id) REFERENCES "User"(user_id)
+    FOREIGN KEY (booking_id) REFERENCES Booking(booking_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES "User"(user_id) ON DELETE CASCADE
 );
+
 ```
 
 
